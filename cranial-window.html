@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Whisker Puff Device</title>
+<style>
+  :root {
+    --ink: #2a2320;
+    --cream: #f5eee2;
+    --cream-deep: #f0e8da;
+    --pink: #fedee1;
+    --pink-deep: #facdd2;
+    --rose: #a34d5a;
+    --muted: #8a7f74;
+    --line: #e3d9c8;
+    --maxw: 820px;
+    --wide: 1100px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream); color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    font-size: 16px; line-height: 1.75; -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 2.5rem; }
+  .wrap-wide { max-width: var(--wide); margin: 0 auto; padding: 0 2.5rem; }
+
+  nav {
+    max-width: var(--wide); margin: 0 auto; padding: 2.5rem 2.5rem 0;
+    display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+  }
+  nav .name { font-size: 1.35rem; font-weight: 600; letter-spacing: -0.02em; text-decoration: none; color: var(--ink); }
+  nav .name span { color: var(--rose); }
+  nav .back { font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; color: var(--muted); transition: color 0.2s ease; }
+  nav .back:hover { color: var(--rose); }
+
+  /* ---------- HEADER (pink panel) ---------- */
+  .header-band { background: var(--pink); margin-top: 2.5rem; padding: 4rem 0; }
+  .header-band .eyebrow {
+    font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--rose); margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.6rem;
+  }
+  .header-band .eyebrow::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--rose); }
+  .header-band h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 600; line-height: 1.12; letter-spacing: -0.03em; margin-bottom: 1.2rem; color: var(--ink); }
+  .header-band .sub { font-size: 1.15rem; color: #5a4038; max-width: 46ch; }
+
+  .meta-row { display: flex; flex-wrap: wrap; gap: 2.5rem; margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(163,77,90,0.25); }
+  .meta-row .item .k { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--rose); margin-bottom: 0.3rem; }
+  .meta-row .item .v { font-size: 0.95rem; font-weight: 500; color: var(--ink); }
+
+  /* ---------- HERO IMAGE ---------- */
+  .hero-img { margin: 3.5rem 0; }
+  .hero-img img { width: 35%; height: auto; display: block; background: var(--cream-deep); border-radius: 3px; margin: 0 auto; }
+  figcaption { margin-top: 0.7rem; font-size: 0.82rem; color: var(--muted); text-align: center; }
+
+  /* ---------- BODY CONTENT ---------- */
+  .content { padding-bottom: 2rem; }
+  .content h2 { font-size: 1.4rem; font-weight: 600; letter-spacing: -0.01em; margin: 3rem 0 1rem; }
+  .content h2 .num { color: var(--rose); margin-right: 0.5rem; }
+  .content p { margin-bottom: 1.2rem; color: #3d332e; }
+  .content a { color: var(--rose); text-decoration: none; border-bottom: 1px solid var(--rose); }
+  .content ul, .content ol { margin: 0 0 1.2rem 5.0rem; }
+  .content li { margin-bottom: 0.4rem; }
+
+  figure { margin: 2rem 0; }
+  figure img { width: 100%; height: auto; display: block; border: 1px solid var(--line); border-radius: 3px; }
+
+  .img-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin: 2rem 0; }
+  .img-row img { width: 100%; height: auto; display: block; border: 1px solid var(--line); border-radius: 3px; }
+
+  /* ---------- BOM TABLE ---------- */
+  table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.95rem; }
+  th, td { text-align: left; padding: 0.7rem 0.5rem; border-bottom: 1px solid var(--line); }
+  th { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  tbody tr:hover { background: var(--pink); }
+
+  /* ---------- CALLOUT ---------- */
+  .note { background: var(--pink); border-left: 3px solid var(--rose); padding: 1rem 1.3rem; margin: 1.8rem 0; font-size: 0.95rem; border-radius: 0 3px 3px 0; color: #4a352f; }
+  .note strong { color: var(--rose); }
+
+  /* ---------- NEXT / FOOTER ---------- */
+  .proj-nav { border-top: 1px solid var(--line); margin-top: 4rem; padding: 2.5rem 0; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+  .proj-nav a { text-decoration: none; color: var(--ink); transition: color 0.2s ease; }
+  .proj-nav a:hover { color: var(--rose); }
+  .proj-nav .lbl { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+
+  footer { border-top: 1px solid var(--line); padding: 3rem 0 4rem; color: var(--muted); font-size: 0.82rem; text-align: center; }
+  footer a { color: var(--muted); text-decoration: none; margin: 0 0.75rem; transition: color 0.2s ease; }
+  footer a:hover { color: var(--rose); }
+
+  @media (max-width: 680px) {
+    .wrap, .wrap-wide, nav { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .img-row { grid-template-columns: 1fr; }
+    .meta-row { gap: 1.5rem; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="name">Mary Morris</a>
+  <a href="index.html" class="back">&larr; Back to work</a>
+</nav>
+
+<!-- pink header band, full-width feel within wide wrap -->
+<div class="header-band">
+  <div class="wrap">
+    <div class="eyebrow">Hardware · 2026</div>
+    <h1>Microscale Cranial Window Implant</h1>
+    <p class="sub">0.5mm Cranial Window for Surgical Implantation - Awake Neuroimaging Applications.</p>
+    <div class="meta-row">
+      <div class="item"><div class="k">Role</div><div class="v">Design for Manufacturing</div></div>
+      <div class="item"><div class="k">Tools</div><div class="v">CAD - Fusion360, Technical Drawings</div></div>
+      <div class="item"><div class="k">Year</div><div class="v">2026</div></div>
+      <div class="item"><div class="k">Organization</div><div class="v">Gu Lab, Harvard Medical School</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap-wide">
+  <figure class="hero-img">
+    <img src=pics/Portfolio_Glass Version 4 without recession and 3.5 Inner diameter.png alt="Rendering of glass implant">
+    <figcaption>Rendering of the borosilicate glass implant</figcaption>
+  </figure>
+</div>
+
+<div class="wrap">
+  <div class="content">
+
+    <h2><span class="num">01</span>Problem</h2>
+    <ul>
+      <li>Existing cranial window implants require surgeons to manually glue multiple microscale glass pieces together.</li>
+      <ul>
+      <li>Time consuming.</li>
+      <li>Due to a small size and clear glass material, some windows were lost during the manual gluing process.</li>
+      <li>During the glue curing process, there were instances of the glue between glass layers drying in a pattern that interfered with widefield and multiphoton microscopy imaging.</li>
+    </ul>
+    </ul>
+
+    <h2><span class="num">02</span>Solution</h2>
+    <ul>
+      <li>Designed a custom glass cranial window implant that does not obscure imaging but also maintains space between the microscope objective and the brain.</li>
+      <li>The well in the implant can be filled with a medium such as water or glycerin. The objective sits in the medium, improving imaging resolution.</li>
+      <li>Designed with CAD in Fusion360.</li>
+      <li>Proposed material: Borosilicate Glass</li>
+    </ul>
+    <figure>
+      <img src="pics/DrawingOfCranialGlassImplant.png">
+      <figcaption>CAD Drawing: 0.5mm outer diameter, 0.4mm inner diameter, 1mm height </figcaption>
+    </figure>
+
+    <!-- add drawing here -->
+
+    <!-- <div class="note"> -->
+      <!-- <strong>Design note:</strong> the Arduino ground and the external 6&nbsp;V supply ground must -->
+      <!-- share a common ground, or the MOSFET has no shared reference. -->
+    <!-- </div> -->
+<!-- UPDATE W MY NOTES HEREEE -->
+    <!-- <h2><span class="num">03</span>Bill of Materials</h2> -->
+    <!-- <table> -->
+      <!-- <thead><tr><th>Component</th><th>Part</th><th>Notes</th></tr></thead> -->
+      <!-- <tbody> -->
+        <!-- <tr><td>Microcontroller</td><td>Arduino UNO R3</td><td>USB-powered</td></tr> -->
+        <!-- <tr><td>MOSFET</td><td>IRLB8721</td><td>Logic-level N-channel</td></tr> -->
+        <!-- <tr><td>Solenoid valve</td><td>3-way, 6&nbsp;V</td><td>External supply</td></tr> -->
+        <!-- <tr><td>Gate resistor</td><td>270&nbsp;&#8486;</td><td>Gate to Arduino pin</td></tr> -->
+        <!-- <tr><td>Flyback diode</td><td>1N4007 / 1N5819</td><td>Across solenoid</td></tr> -->
+        <!-- <tr><td>Pneumatic Tubing</td><td>3mm Silicone Tubing</td><td>On/off control</td></tr> -->
+        <!-- <tr><td>Switch</td><td>SPDT toggle</td><td> Override for on/off control</td></tr> -->
+      <!-- </tbody> -->
+    <!-- </table> -->
+
+    <!-- <h2><span class="num">04</span>Links & Further Viewing</h2> -->
+    <!-- <p>View on -->
+       <!-- <a href=https://github.com/marymorris24/Whisker-Puff-Device>GitHub</a>.</p> -->
+    <!-- <p>See user guide: <iframe src="C:\Users\rainb\OneDrive\Aug26_Proj\PCB Practice\GuLabWhiskerPuff\Copy of Guide To Airpuff Stimulation.pdf" width="100%" height="600px" style="border: none; border-radius: 3px;"></iframe> -->
+  <!-- </p> -->
+  <!-- </div> -->
+
+  <div class="proj-nav">
+    <a href="index.html"><div class="lbl">Back</div>All work</a>
+    <a href="#"><div class="lbl">Next project &rarr;</div>Project 3</a>
+  </div>
+</div>
+
+<footer>
+  &copy; 2026 Mary Morris
+  <div style="margin-top:0.6rem;">
+      <a href="https://github.com/marymorris24">GitHub</a>
+      <a href="https://linkedin.com/in/maryjmorris">LinkedIn</a>
+      <a href="mailto:morris.mary@northeastern.edu">Email</a>
+  </div>
+</footer>
+
+</body>
+</html>
