@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Name — Portfolio</title>
+<style>
+  :root {
+    --ink: #2a2320;          /* warm near-black (reads well on cream) */
+    --cream: #f5eee2;        /* page background */
+    --cream-deep: #f0e8da;   /* slightly deeper cream for panels */
+    --pink: #fedee1;         /* salmon pink surface */
+    --pink-deep: #facdd2;    /* deeper pink for hovers */
+    --rose: #a34d5a;         /* readable rose — text & links */
+    --muted: #8a7f74;        /* warm grey captions */
+    --line: #e3d9c8;         /* hairline on cream */
+    --maxw: 1100px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    font-size: 15px; line-height: 1.7; -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 2.5rem; }
+
+  /* ---------- NAV ---------- */
+  nav {
+    display: flex; align-items: baseline; justify-content: space-between;
+    padding: 2.5rem 0 4rem; flex-wrap: wrap; gap: 1rem;
+  }
+  nav .name { font-size: 1.35rem; font-weight: 600; letter-spacing: -0.02em; text-decoration: none; color: var(--ink); }
+  nav .name span { color: var(--rose); }
+  nav .links { display: flex; gap: 2.5rem; }
+  nav .links a {
+    text-decoration: none; color: var(--ink);
+    font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase;
+    padding-bottom: 2px; border-bottom: 1px solid transparent;
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+  nav .links a:hover { color: var(--rose); border-color: var(--rose); }
+  nav .links a.active { border-color: var(--ink); }
+
+  /* ---------- INTRO (pink panel) ---------- */
+  .intro {
+    background: var(--pink);
+    margin: 0 0 5rem; padding: 3.5rem; border-radius: 4px;
+  }
+  .intro-inner { max-width: 640px; }
+  .intro h1 {
+    font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 600;
+    line-height: 1.2; letter-spacing: -0.03em; margin-bottom: 1.5rem; color: var(--ink);
+  }
+  .intro h1 em { font-style: normal; color: var(--rose); }
+  .intro p { color: #5a4038; max-width: 52ch; }
+  .intro a.contact {
+    display: inline-block; margin-top: 1.5rem; color: var(--ink);
+    text-decoration: none; border-bottom: 2px solid var(--rose); padding-bottom: 1px;
+    transition: color 0.2s ease;
+  }
+  .intro a.contact:hover { color: var(--rose); }
+
+  /* ---------- SECTION LABELS ---------- */
+  .section-label {
+    font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 2rem; padding-bottom: 0.8rem;
+    border-bottom: 1px solid var(--line);
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .section-label::before {
+    content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--pink-deep);
+  }
+
+  /* ---------- WORK GRID ---------- */
+  .grid {
+    display: flex; flex-direction: row; gap: 2rem;
+    overflow-x: auto; scroll-snap-type: x mandatory;
+    padding-bottom: 1.5rem; margin-bottom: 6rem;
+    -webkit-overflow-scrolling: touch;
+  }
+  .grid::-webkit-scrollbar { height: 6px; }
+  .grid::-webkit-scrollbar-track { background: var(--line); border-radius: 3px; }
+  .grid::-webkit-scrollbar-thumb { background: var(--pink-deep); border-radius: 3px; }
+  .card {
+    text-decoration: none; color: var(--ink); display: block;
+    flex: 0 0 320px; scroll-snap-align: start;
+  }
+  .card .thumb {
+    width: 100%; aspect-ratio: 4 / 3; background: var(--cream-deep);
+    overflow: hidden; margin-bottom: 1rem; border-radius: 3px;
+  }
+  .card .thumb img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    transition: transform 0.5s cubic-bezier(.2,.6,.2,1);
+  }
+  .card:hover .thumb img { transform: scale(1.03); }
+  .card h3 { font-size: 1rem; font-weight: 600; letter-spacing: -0.01em; margin-bottom: 0.2rem; transition: color 0.2s ease; }
+  .card:hover h3 { color: var(--rose); }
+  .card .meta { color: var(--muted); font-size: 0.85rem; }
+
+  /* ---------- BLOG LIST ---------- */
+ /* # .posts { margin-bottom: 6rem; } */
+ /* # .post { */
+ /* #   display: flex; justify-content: space-between; align-items: baseline; */
+ /* #   gap: 2rem; padding: 1.4rem 1rem; border-bottom: 1px solid var(--line); */
+ /* #   text-decoration: none; color: var(--ink); border-radius: 3px; */
+ /* #   transition: padding-left 0.25s ease, background 0.25s ease; */
+ /* # } */
+ /* # .post:hover { padding-left: 1.6rem; background: var(--pink); } */
+ /* # .post .t { font-weight: 500; transition: color 0.2s ease; } */
+  /* .post:hover .t { color: var(--rose); } */
+  /* .post .d { color: var(--muted); font-size: 0.85rem; white-space: nowrap; } */
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    border-top: 1px solid var(--line); padding: 3rem 0 4rem;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1rem; color: var(--muted); font-size: 0.82rem;
+  }
+  footer a { color: var(--muted); text-decoration: none; margin-left: 1.5rem; transition: color 0.2s ease; }
+  footer a:hover { color: var(--rose); }
+
+  @media (max-width: 680px) {
+    .wrap { padding: 0 1.5rem; }
+    .intro { padding: 2.5rem 1.75rem; }
+    .grid { gap: 1.5rem; }
+    nav { padding-bottom: 3rem; }
+    nav .links { gap: 1.5rem; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <nav>
+    <a href="index.html" class="name">Mary Morris</a>
+    <div class="links">
+      <a href="#work" class="active">Work</a>
+     <!-- # <a href="#writing">Writing</a> -->
+      <a href="#about">About</a>
+      <a href="mailto:you@email.com">Contact</a>
+    </div>
+  </nav>
+
+  <!-- <section class="intro" id="about"> -->
+   <!-- <div class="intro-inner"> -->
+      <!-- <h1>Hello, I'm [Your Name] &mdash; I build things at the intersection of <em>neuroscience</em> and hardware.</h1> -->
+      <!-- <p>Based in Boston. I design and prototype instruments for in&nbsp;vivo experiments, -->
+         <!-- write about what I learn along the way, and occasionally make things just to see if I can.</p> -->
+      <!-- <a class="contact" href="mailto:you@email.com">Email &rarr;</a> -->
+    <!-- </div> -->
+  <!-- </section> -->
+
+  <section id="work">
+    <div class="section-label">Hardware Projects</div>
+    <div class="grid">
+      <a class="card" href="whisker-puff.html">
+        <div class="thumb"><img src="C:\Users\rainb\OneDrive\Aug26_Proj\Website\WhiskerPuffPortfolio\SchematicImagePortfolio.png" alt="Whisker puff device"></div>
+        <h3>Whisker Puff Device</h3>
+        <div class="meta">Pneumatic Stimulation Experimental Rig &middot; 2026</div>
+      </a>
+      <a class="card" href="#">
+        <div class="thumb"><img src="C:\Users\rainb\OneDrive\Aug26_Proj\Website\Window_Portfolio\Portfolio_Glass Version 4 without recession and 3.5 Inner diameter.png" alt="Glass Cranial Window Implant"></div>
+        <h3>Glass Cranial Implant</h3>
+        <div class="meta">Microscale Implant for Live Vascular Microscopy Imaging &middot; 2026</div>
+      </a>
+      <a class="card" href="#">
+        <div class="thumb"><img src="project3.png" alt="Project three"></div>
+        <h3>Project Three</h3>
+        <div class="meta">Short descriptor &middot; 2025</div>
+      </a>
+      <a class="card" href="#">
+        <div class="thumb"><img src="project4.png" alt="Project four"></div>
+        <h3>Project Four</h3>
+        <div class="meta">Short descriptor &middot; 2024</div>
+      </a>
+    </div>
+  </section>
+
+ <!-- # <section id="writing"> -->
+ <!-- #   <div class="section-label">Writing</div> -->
+ <!-- #   <div class="posts"> -->
+      <!-- <a class="post" href="#"> -->
+        <!-- <span class="t">Driving a solenoid valve without frying your MOSFET</span> -->
+        <!-- <span class="d">Feb 2026</span> -->
+      <!-- </a> -->
+      <!-- <a class="post" href="#"> -->
+        <!-- <span class="t">Notes on reducing habituation in whisker stimulation</span> -->
+        <!-- <span class="d">Jan 2026</span> -->
+      <!-- </a> -->
+      <!-- <a class="post" href="#"> -->
+        <!-- <span class="t">Learning KiCad as a neuroscientist</span> -->
+        <!-- <span class="d">Dec 2025</span> -->
+      <!-- </a> -->
+    <!-- </div> -->
+  <!-- </section> -->
+
+  <footer>
+    <span>&copy; 2026 Mary Morris</span>
+    <span>
+      <a href="https://github.com/marymorris24">GitHub</a>
+      <a href="https://linkedin.com/in/maryjmorris">LinkedIn</a>
+      <a href="mailto:morris.mary@northeastern.edu">Email</a>
+    </span>
+  </footer>
+
+</div>
+</body>
+</html>
