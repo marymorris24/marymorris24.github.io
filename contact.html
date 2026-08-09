@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Mary Morris</title>
+<style>
+  :root {
+    --ink: #2a2320;
+    --cream: #f5eee2;
+    --cream-deep: #f0e8da;
+    --pink: #fedee1;
+    --pink-deep: #facdd2;
+    --rose: #a34d5a;
+    --muted: #8a7f74;
+    --line: #e3d9c8;
+    --maxw: 760px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    font-size: 16px; line-height: 1.7;
+  }
+
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+  nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem; flex-wrap: wrap; gap: 1rem; }
+  nav a { text-decoration: none; color: var(--ink); }
+  nav .name { font-size: 1.2rem; font-weight: 600; }
+  nav .back { font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+
+  .card {
+    background: var(--pink);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 2rem;
+  }
+  h1 { font-size: clamp(1.7rem, 3vw, 2.3rem); margin-bottom: 1rem; }
+  p { color: #5a4038; margin-bottom: 1.5rem; }
+  ul { list-style: none; padding: 0; }
+  li { margin-bottom: 0.9rem; }
+  a { color: var(--rose); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .masked { font-family: monospace; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <nav>
+      <a href="index.html" class="name">Mary Morris</a>
+      <a href="index.html" class="back">&larr; Back to work</a>
+    </nav>
+
+    <div class="card">
+      <h1>Contact</h1>
+      <ul>
+        <li><a href="https://linkedin.com/in/maryjmorris" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        <li><a href="https://github.com/marymorris24" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+        <li>morris.mary@northeastern.edu</li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>
