@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ME4508 Course Project</title>
+<title>Tactility: Assistive Braille Reader</title>
 <style>
   :root {
     --ink: #2a2320;
@@ -39,7 +39,6 @@
   nav .back { font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; color: var(--muted); transition: color 0.2s ease; }
   nav .back:hover { color: var(--rose); }
 
-  /* ---------- HEADER (pink panel) ---------- */
   .header-band { background: var(--pink); margin-top: 2.5rem; padding: 4rem 0; }
   .header-band .eyebrow {
     font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
@@ -53,37 +52,31 @@
   .meta-row .item .k { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--rose); margin-bottom: 0.3rem; }
   .meta-row .item .v { font-size: 0.95rem; font-weight: 500; color: var(--ink); }
 
-  /* ---------- HERO IMAGE ---------- */
   .hero-img { margin: 3.5rem 0; }
-  .hero-img img { width: 35%; height: auto; display: block; background: var(--cream-deep); border-radius: 3px; margin: 0 auto; }
+  .hero-img img {
+    width: 70%;
+    max-width: 560px;
+    height: auto;
+    display: block;
+    background: var(--cream-deep);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(42, 35, 32, 0.06);
+    margin: 0 auto;
+  }
   figcaption { margin-top: 0.7rem; font-size: 0.82rem; color: var(--muted); text-align: center; }
 
-  /* ---------- BODY CONTENT ---------- */
   .content { padding-bottom: 2rem; }
   .content h2 { font-size: 1.4rem; font-weight: 600; letter-spacing: -0.01em; margin: 3rem 0 1rem; }
   .content h2 .num { color: var(--rose); margin-right: 0.5rem; }
   .content p { margin-bottom: 1.2rem; color: #3d332e; }
   .content a { color: var(--rose); text-decoration: none; border-bottom: 1px solid var(--rose); }
-  .content ul, .content ol { margin: 0 0 1.2rem 5.0rem; }
+  .content ul, .content ol { margin: 0 0 1.2rem 1.2rem; }
   .content li { margin-bottom: 0.4rem; }
 
   figure { margin: 2rem 0; }
   figure img { width: 100%; height: auto; display: block; border: 1px solid var(--line); border-radius: 3px; }
 
-  .img-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin: 2rem 0; }
-  .img-row img { width: 100%; height: auto; display: block; border: 1px solid var(--line); border-radius: 3px; }
-
-  /* ---------- BOM TABLE ---------- */
-  table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.95rem; }
-  th, td { text-align: left; padding: 0.7rem 0.5rem; border-bottom: 1px solid var(--line); }
-  th { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
-  tbody tr:hover { background: var(--pink); }
-
-  /* ---------- CALLOUT ---------- */
-  .note { background: var(--pink); border-left: 3px solid var(--rose); padding: 1rem 1.3rem; margin: 1.8rem 0; font-size: 0.95rem; border-radius: 0 3px 3px 0; color: #4a352f; }
-  .note strong { color: var(--rose); }
-
-  /* ---------- NEXT / FOOTER ---------- */
   .proj-nav { border-top: 1px solid var(--line); margin-top: 4rem; padding: 2.5rem 0; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
   .proj-nav a { text-decoration: none; color: var(--ink); transition: color 0.2s ease; }
   .proj-nav a:hover { color: var(--rose); }
@@ -95,7 +88,6 @@
 
   @media (max-width: 680px) {
     .wrap, .wrap-wide, nav { padding-left: 1.5rem; padding-right: 1.5rem; }
-    .img-row { grid-template-columns: 1fr; }
     .meta-row { gap: 1.5rem; }
   }
   @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto; } }
@@ -110,54 +102,54 @@
 
 <div class="header-band">
   <div class="wrap">
-    <div class="eyebrow">Coursework · 2026</div>
-    <h1>ME4508: Mechanical Engineering Computation &amp; Design</h1>
-    <p class="sub">Course focused on the mathematical basis of finite element analysis with applied practice in solid modeling problems.</p>
+    <div class="eyebrow">Hardware · 2026</div>
+    <h1>Tactility: Assistive Braille Reader</h1>
+    <p class="sub">Assistive Braille reader device developed as part of a team in Forge, a product development lab at Northeastern.</p>
     <div class="meta-row">
-      <div class="item"><div class="k">Tools</div><div class="v">SolidWorks, MATLAB, ANSYS</div></div>
+      <div class="item"><div class="k">Role</div><div class="v">Electrical Prototyping, Sensors</div></div>
+      <div class="item"><div class="k">Tools</div><div class="v">Electronics, Firmware Design, Schematic Capture, KiCAD, Altium Designer, ESP32</div></div>
       <div class="item"><div class="k">Year</div><div class="v">2026</div></div>
-      <div class="item"><div class="k">Course</div><div class="v">ME4508: Mechanical Engineering Computation &amp; Design, Northeastern University</div></div>
-      <div class="item"><div class="k">Location</div><div class="v">Seville, Spain (Northeastern Dialogue of Civilizations Program)</div></div>
+      <div class="item"><div class="k">Student Organization</div><div class="v">Forge Product Development Lab</div></div>
     </div>
   </div>
 </div>
 
 <div class="wrap-wide">
   <figure class="hero-img">
-    <img src="pics/EngineBlockME4508.png" alt="Example model">
-    <figcaption>to be added</figcaption>
+    <img src="pics/ForgeCAD.png" alt="3D solid model of the device prototype.">
+    <figcaption>3D solid model of the device prototype. Credit: Forge Mechanical Team Members</figcaption>
   </figure>
 </div>
 
 <div class="wrap">
   <div class="content">
-    <h2><span class="num">01</span>Course Overview</h2>
-    <!-- <ul> -->
-      <!-- <li> -->
-      
-      <!-- </li> -->
-    <!-- </ul> -->
+    <h2><span class="num">01</span>Problem & Solution</h2>
+    <p>Existing braille readers are bulky and range in cost from hundreds to thousands of dollars. Tactility is a novel braille reader designed to be portable, financially accessible (< $100), and effective for daily use. As part of a team, I developed firmware and user input integration for a device that turns text into a refreshable, 6-cell braille display through motors driving a rack and pinion mechanism.</p>
 
-    <h2><span class="num">02</span>Selected Project 1</h2>
-  <!-- <ul> -->
-      <!-- <li> -->
-      
-      <!-- </li> -->
-    <!-- </ul> -->
+    <h2><span class="num">02</span>Electrical Sensors Work</h2>
+    <ul>
+      <li>Specified device parts including user input sensors, sensory feedback motors, and motors used to drive braille pin movement.</li>
+      <li>Wrote C++ firmware for processing user inputs and wrote functions for continuously translating inputs to update the device speed and reading mode state.</li>
+      <li>Co-authored final device ESP32 scripts and circuit schematic.</li>
+      <li>Conducted outreach to Easterseals, a nonprofit serving individuals with disabilities, to gather and implement product feedback.</li>
+      <li>Conducted product research about needs in the assistive technology and braille reader market.</li>
+    </ul>
 
+    <figure>
+      <img src="pics/SchematicForge.png" alt="Preliminary Circuit Schematic for the Tactility device.">
+      <figcaption>Preliminary circuit schematic for the Tactility device, including an ESP32 microcontroller, a potentiometer for speed control, a sensory feedback vibration disc, servo motors controlling pin motion, a capacitive touch sensor that was not used in the final design, and a power switch.</figcaption>
+    </figure>
 
-    <h2><span class="num">03</span>Selected Project 2</h2>
-   <!-- <ul> -->
-      <!-- <li> -->
-      
-      <!-- </li> -->
-    <!-- </ul> -->
-
-
+    <h2><span class="num">03</span>Documentation</h2>
+    <ul>
+        <li>See the code on GitHub: <a href="https://github.com/marymorris24/tactility">Tactility Repository</a></li>
+        <li>See the design notebook: <a href="https://docs.google.com/document/d/12m7EcdED_aRx3dQ0oZDFqs9sWSrd7H1Kt4G0-s_55OA/edit?tab=t.0">Design Notebook</a></li>
+    </ul>
+  </div>
 
   <div class="proj-nav">
     <a href="index.html"><div class="lbl">Back</div>All work</a>
-    <a href="tactility.html"><div class="lbl">Previous project &larr;</div>Tactility Hardware Project</a>
+    <a href="ME4508.html"><div class="lbl">Next project &rarr;</div>ME4508 Coursework</a>
   </div>
 </div>
 

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-label="Tactility hardware project illustration">
+  <rect width="1200" height="900" fill="#f5eee2"/>
+  <rect x="120" y="160" width="960" height="580" rx="28" fill="#fedee1" stroke="#a34d5a" stroke-width="6"/>
+  <rect x="220" y="260" width="240" height="180" rx="18" fill="#f0e8da" stroke="#8a7f74" stroke-width="4"/>
+  <rect x="520" y="250" width="340" height="220" rx="24" fill="#f0e8da" stroke="#8a7f74" stroke-width="4"/>
+  <rect x="565" y="300" width="250" height="120" rx="16" fill="#facdd2"/>
+  <circle cx="290" cy="355" r="58" fill="#a34d5a" opacity="0.85"/>
+  <rect x="260" y="465" width="80" height="120" rx="12" fill="#a34d5a"/>
+  <rect x="360" y="465" width="80" height="120" rx="12" fill="#a34d5a"/>
+  <path d="M720 530 C780 470, 860 470, 910 530" stroke="#a34d5a" stroke-width="10" fill="none" stroke-linecap="round"/>
+  <circle cx="720" cy="530" r="18" fill="#2a2320"/>
+  <circle cx="910" cy="530" r="18" fill="#2a2320"/>
+  <path d="M300 610 L390 610" stroke="#2a2320" stroke-width="10" stroke-linecap="round"/>
+  <path d="M620 610 L790 610" stroke="#2a2320" stroke-width="10" stroke-linecap="round"/>
+  <text x="600" y="760" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="42" fill="#2a2320">Tactility Hardware Project</text>
+</svg>
